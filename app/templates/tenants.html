@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}السكان{% endblock %}
+{% block content %}
+    <h1>السكان</h1>
+    <a href="{{ url_for('add_tenant') }}" class="btn btn-success mb-3">إضافة ساكن</a>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>اسم الساكن</th>
+                <th>رقم السجل المدني</th>
+                <th>رقم الجوال</th>
+                <th>تاريخ استلام الوحدة السكنية</th>
+                <th>القطاع</th>
+                <th>الحي</th>
+                <th>الوحدة</th>
+                <th>الإجراءات</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tenant in tenants %}
+                <tr>
+                    <td>{{ tenant.name }}</td>
+                    <td>{{ tenant.tenant_id }}</td>
+                    <td>{{ tenant.mobile }}</td>
+                    <td>{{ tenant.start_date }}</td>
+                    <td>{{ tenant.workplace }}</td>
+                    <td>{{ tenant.cluster }}</td>
+                    <td>{{ tenant.villa }}</td>
+                    <td>
+                        <a href="{{ url_for('edit_tenant', tenant_id=tenant.id) }}" class="btn btn-primary btn-sm">تعديل</a>
+                        <form action="{{ url_for('archive_tenant', tenant_id=tenant.id) }}" method="POST" style="display:inline;"onsubmit="return confirmDelete();">
+                            <button type="submit" class="btn btn-warning btn-sm">اخلاء</button>
+                        </form>
+                        
+                        <script>
+                        function confirmDelete() {
+                            return confirm('هل أنت متأكد أنك تريد اخلاء هذا الساكن من الوحدة؟');
+                        }
+                        </script>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

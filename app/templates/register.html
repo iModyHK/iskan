@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}تسجيل حساب جديد{% endblock %}
+
+{% block content %}
+<h1>تسجيل حساب جديد</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+        {{ form.username.label(class="form-control-label") }}
+        {{ form.username(class="form-control") }}
+    </div>
+    <div class="form-group">
+        {{ form.password.label(class="form-control-label") }}
+        {{ form.password(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">تسجيل</button>
+</form>
+{% endblock %}

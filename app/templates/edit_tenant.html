@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}تعديل بيانات الساكن{% endblock %}
+{% block content %}
+    <h1>تعديل بيانات الساكن</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.cluster.label }} {{ form.cluster(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.villa.label }} {{ form.villa(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.name.label }} {{ form.name(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.tenant_id.label }} {{ form.tenant_id(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.mobile.label }} {{ form.mobile(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.start_date.label }} {{ form.start_date(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.workplace.label }} {{ form.workplace(class_='form-control') }}
+        </div>
+        <div class="form-group">
+            {{ form.property_id.label }} {{ form.property_id(class_='form-control') }}
+        </div>
+        <button type="submit" class="btn btn-success">ارسال</button>
+    </form>
+{% endblock %}
